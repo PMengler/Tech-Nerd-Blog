@@ -16,7 +16,12 @@ const hbs = exphbs.create({ helpers });
 // refresh on this variable and what each piece is
 const sess = {
   secret: 'Super secret secret', // wtf is this for?
-  cookie: {},
+  cookie: {
+    maxAge: 60 * 60 * 1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
