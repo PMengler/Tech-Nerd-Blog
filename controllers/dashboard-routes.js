@@ -1,9 +1,5 @@
 const router = require('express').Router();
-
-const apiRoutes = require('./api');
-
-router.use('/api', apiRoutes);
-// router.use('/dashboard', require('./dashboard'));
+const { User, Post, Comment } = require('../models');
 
 router.get('/', (req, res) => {
   res.render('/dashboard');

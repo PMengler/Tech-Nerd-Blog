@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.comment('/', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const commentData = await Comment.create(req.body);
 

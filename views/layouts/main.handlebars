@@ -14,7 +14,14 @@
     <h1>Welcome to the Tech Nerd Blog!</h1>
   </header>
   <nav>
-    <a href="/">Homepage</a>
+    <a href="/home">Homepage</a>
+    <a href="/dashboard">Dashboard</a>
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <!-- Otherwise, show a link to login -->
+    <a href="/login">Login</a>
+    {{/if}}
   </nav>
   <main>
     <aside>
@@ -24,6 +31,11 @@
       {{{body}}}
     </div>
   </main>
+  </main>
+  <!-- If the user is logged in, load the JS script for when they logout -->
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
