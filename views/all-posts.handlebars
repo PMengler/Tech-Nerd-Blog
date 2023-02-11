@@ -1,14 +1,43 @@
-<section class="container">
-  <h3 class="post-name">{{post.name}}</h3>
-  <!-- If the user is logged in, render the gallery content -->
+<h1>Blog Dashboard</h1>
+    <nav>
+      <ul>
+        {{#each pages}}
+        <li><a href="{{url}}">{{name}}</a></li>
+        {{/each}}
+      </ul>
+    </nav>
+    <main>
+      <h2>Create a New Post</h2>
+      <form action="/posts" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+        <br><br>
+        <label for="body">Body:</label>
+        <textarea id="body" name="body"></textarea>
+        <br><br>
+        <input type="submit" value="Create Post">
+      </form>
+      <hr>
+      <h2>Recent Posts</h2>
+      {{#each posts}}
+      <h3>{{title}}</h3>
+      <p>{{content}}</p>
+      <h4>Comments</h4>
+      <ul>
+        {{#each comments}}
+        <li>{{text}}</li>
+        {{/each}}
+      </ul>
+      <form action="/posts/{{id}}/comments" method="post">
+        <label for="comment">Add a Comment:</label>
+        <input type="text" id="comment" name="comment">
+        <br><br>
+        <input type="submit" value="Add Comment">
+      </form>
+      {{/each}}
+    </main>
+  <!-- If the user is logged in, load the JS script for when they logout -->
   {{#if loggedIn}}
-  <section class="flex-row justify-center">
-    {{#each dashboard.posts as |post|}}
-    {{> post-details}}
-    {{/each}}
-  </section>
-</section>
-<!-- Otherwise, provide a link to login -->
-{{else}}
-<a href="/login">You must login first to view the posts</a>
-{{/if}}
+  <script src="../../public/js/logout.js"></script>
+  {{/if}}
+  </body>

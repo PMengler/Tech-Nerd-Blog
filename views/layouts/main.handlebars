@@ -11,30 +11,31 @@
 
 <body>
   <header>
-    <h1>Welcome to the Tech Nerd Blog!</h1>
+    <h1>TECH NERD BLOG</h1>
   </header>
   <nav>
-    <a href="/home">Homepage</a>
-    <a href="/dashboard">Dashboard</a>
     {{#if loggedIn}}
+    {{!-- <a href="/dashboard">Blog</a> --}}
+    {{!-- <a href="/dashboard">Dashboard</a> --}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
-    <!-- Otherwise, show a link to login -->
-    <a href="/login">Login</a>
+    <!-- Otherwise, show a link to signup -->
+    <a href="/login">Log In</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/">Blog</a>
     {{/if}}
   </nav>
   <main>
-    <aside>
-      <h2>Sign in to start talking with your Tech peers!</h2>
-    </aside>
-    <div class="events">
+    <div class="posts">
       {{{body}}}
     </div>
   </main>
   </main>
   <!-- If the user is logged in, load the JS script for when they logout -->
   {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
+  <script src="../../public/js/logout.js"></script>
+  {{else}}
+  <script src="../../public/js/login.js"></script>
   {{/if}}
 </body>
 
