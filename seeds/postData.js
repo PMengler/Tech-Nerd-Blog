@@ -4,8 +4,12 @@ const postdata = [
   {
     title: 'First Post',
     content: 'This is the first post',
-    user_name: 'Sal',
     user_id: 1,
+  },
+  {
+    title: 'Second Post',
+    content: 'This is the second post',
+    user_id: 2,
   },
 ];
 

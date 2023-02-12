@@ -35,6 +35,11 @@ Comment.init(
         key: 'id',
       },
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      allowNull: false,
+    },
   },
   {
     sequelize,
