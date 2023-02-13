@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const bcrypt = require('bcrypt');
+const { User, Post, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -21,20 +22,15 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 'title', 'content', 'createdAt'],
       },
-
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
+        attributes: ['id', 'comment_text', 'createdAt'],
         include: {
           model: Post,
           attributes: ['title'],
         },
-      },
-      {
-        model: Post,
-        attributes: ['title'],
       },
     ],
   })
@@ -59,7 +55,7 @@ router.post('/', (req, res) => {
   })
     .then((dbUserData) => {
       req.session.save(() => {
-        req.session.userId = dbUserData.id;
+        req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
 

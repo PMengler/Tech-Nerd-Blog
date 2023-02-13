@@ -16,11 +16,11 @@ router.get('/signup', (req, res) => {
 
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'content'],
+    attributes: ['id', 'title', 'content', 'createdAt'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username'],
@@ -47,11 +47,11 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'title', 'content'],
+    attributes: ['id', 'title', 'content', 'createdAt'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username'],
@@ -74,12 +74,15 @@ router.get('/post/:id', (req, res) => {
 });
 
 router.get('/posts-comments', (req, res) => {
-  Post.findAll({
-    attributes: ['id', 'title', 'content'],
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ['id', 'title', 'content', 'createdAt'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username'],
