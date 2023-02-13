@@ -25,7 +25,7 @@ In order to run the applicaton, run the following command in the integrated term
 
 The user must sign into the mysql shell and run SOURCE db/schema.sql; to initialize the database. Then they can choose to run 'npm run seeds' to seed the database with default information. Then the user must run 'npm start' to initialize the server and view the webpage.
 
-![alt text](img)
+![Screenshot](https://user-images.githubusercontent.com/114950259/218577806-6986dfa5-5fae-4e94-8a64-798740882fec.jpeg)
 
 ## Contributing
 
