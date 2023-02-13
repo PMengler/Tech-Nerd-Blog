@@ -45,6 +45,8 @@ https://github.com/PMengler/Tech-Nerd-Blog
 
 Link to deployed application on Heroku:
 
+https://tech-nerd-blog.herokuapp.com/
+
 ## License
 
 NOTICE:
