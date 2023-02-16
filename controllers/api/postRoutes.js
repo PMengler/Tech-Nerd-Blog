@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
-const withAuth = require('../../utils/auth');
+const mustAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   console.log('Database is searching for all posts');
@@ -64,7 +64,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', mustAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
@@ -77,7 +77,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', mustAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
